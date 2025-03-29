@@ -1,5 +1,7 @@
 'use client'
 
+import LoseModal from "./LoseModal";
+
 interface TimerProps {
   timeLeft: number;
 }
@@ -13,10 +15,14 @@ const Timer = ({timeLeft}:TimerProps) => {
     return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
+  if(timeLeft <= 0) {
+    return <LoseModal />; // Show the modal when time is up
+  }
+
 
   return (
     
-    <div className="fixed top-8 left-7 w-[150px] bg-[#E9F6F9]  py-4 px-6 rounded-full shadow-lg ">
+    <div className="font-jersey fixed top-8 left-7 w-[150px] bg-[#E9F6F9]  py-4 px-6 rounded-full shadow-lg ">
       <p className="text-6xl text-black text-center">{formatTime(timeLeft)}</p>
     </div>
 

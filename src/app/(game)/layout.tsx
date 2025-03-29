@@ -11,7 +11,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [timeLeft, setTimeLeft] = useState(300); // Example: 10 minutes (600 seconds)
+  const [timeLeft, setTimeLeft] = useState(10); // Example: 10 minutes (600 seconds)
 
   useEffect(() => {
     // Only run the timer if timeLeft > 0
@@ -26,9 +26,11 @@ export default function RootLayout({
   }, [timeLeft]);
 
   return (
-    <div className="relative min-h-screen text-white flex flex-col items-center justify-center">
+    <>
+    {/* <div className="relative min-h-screen text-white flex flex-col items-center justify-center"> */}
       {children}
       <Timer timeLeft={timeLeft} />
-    </div>
+    {/* </div> */}
+    </>
   );
 }
