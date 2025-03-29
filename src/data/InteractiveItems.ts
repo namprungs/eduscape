@@ -13,16 +13,16 @@ export interface InteractiveItem {
 export const interactiveMap: Record<string, InteractiveItem[]> = {
   room: [
     {
-      id: "note_math",
+      id: "note_glass",
       name: "โน้ตคณิตศาสตร์",
-      zoomImage: "/images/note_math.png",
+      zoomImage: "/images/note_glass.png",
       clickArea: { x: 33, y: 36, width: 6, height: 8 },
     },
     {
       id: "note_physic",
       name: "โน้ตฟิสิก",
-      zoomImage: "/images/note_math.png", // อาจจะเปลี่ยนรูปถ้ามีรูปจริงของ note_physic
-      clickArea: { x: 33, y: 36, width: 6, height: 8 },
+      zoomImage: "/images/note_physic.png", // อาจจะเปลี่ยนรูปถ้ามีรูปจริงของ note_physic
+      clickArea: { x: 48, y: 26, width: 4, height: 8 },
     },
     {
       id: "apple",
@@ -59,9 +59,9 @@ export const interactiveMap: Record<string, InteractiveItem[]> = {
       clickArea: { x: 30, y: 40, width: 40, height: 50 },
     },
     {
-      id: "doorlock",
-      name: "ประตูล็อค",
-      zoomImage: "/images/doorlock.png",
+      id: "glass",
+      name: "แก้วน้ำ",
+      zoomImage: "/images/glass.png",
       clickArea: { x: 73, y: 0, width: 20, height: 40 },
     },
     {

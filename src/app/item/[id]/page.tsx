@@ -79,7 +79,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
             src={currentItem.zoomImage}
             alt={currentItem.name}
             fill
-            className="object-cover"
+            className="object-fit"
             sizes="100vw"
             priority
           />
