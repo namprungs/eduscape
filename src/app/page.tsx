@@ -50,10 +50,10 @@ export default function Home() {
           </button>
         </Link>
       </div>
-      <Link href="/settings" className="absolute bottom-4 left-4">
+      <Link href="/settings" className="absolute bottom-4 left-4 md:bottom-25 md:left-30">
         <Icon
           icon="majesticons:settings-cog"
-          className="w-[40px] h-[40px] md:w-[70px] md:h-[70px]"
+          className="w-[40px] h-[40px] md:w-[80px] md:h-[80px]"
           color="#4A5568"
         />
       </Link>
