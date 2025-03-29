@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 export default function Login() {
   return (
     <div className="flex flex-col w-full items-center justify-center h-screen">
-      <div className="bg-[#9DE0F1]/70 rounded-[48px] p-8 w-full max-w-lg drop-shadow-md">
+      <div className="bg-[#FB9556]/70 rounded-[48px] p-8 w-full max-w-lg drop-shadow-md">
         <h2 className="text-6xl md:text-5xl text-black text-center mb-6">
           sign up
         </h2>
@@ -31,22 +31,25 @@ export default function Login() {
         </div>
 
         <div className="flex justify-center gap-4">
-          <button className="w-1/3 py-3 rounded-full bg-[#E9F6F9]/70 text-[#FB9556] text-2xl md:text-3xl font-bold hover:bg-orange-300 transition mb-4">
-            log in
+          <button className="w-1/3 py-3 rounded-full bg-[#FFCAA9]/70 tracking-wider text-white text-2xl md:text-3xl hover:bg-orange-300 transition mb-4">
+            sign up
           </button>
         </div>
 
-        <p className="text-center text-black text-lg md:text-xl ">
+        <p className="text-center text-white text-lg md:text-xl ">
           Don&apos;t have an account?{" "}
-          <Link href="/signup" className="ml-2 text-[#FB9556] hover:underline">
+          <Link href="/signup" className="ml-2 text-black hover:underline">
             Sign up
           </Link>
         </p>
       </div>
 
       {/* ไอคอนบ้าน */}
+      <Link href="/settings" className="absolute bottom-4 left-4">
+        <Icon icon="majesticons:settings-cog" width="70" height="70" color="#4A5568" />
+      </Link>
       <Link href="/" className="absolute bottom-4 right-4">
-        <Icon icon="mdi:home" width="40" height="40" color="#003366" />
+        <Icon icon="pixelarticons:home" width="70" height="70" color="#4A5568" />
       </Link>
     </div>
   );

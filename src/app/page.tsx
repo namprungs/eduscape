@@ -20,23 +20,25 @@ export default function Home() {
       <div className="flex flex-col gap-3 md:gap-6 w-full max-w-[600px] md:w-[70%]">
         <div className="flex gap-2 md:gap-4">
           <Link href="/login" className="flex-1">
-            <button className="w-full py-2 md:py-4 rounded-full bg-[#9DE0F1]/70 text-[#FB9556] text-2xl md:text-5xl hover:bg-blue-300 transition">
+            <button className="w-full py-2 md:py-4 rounded-full bg-[#9DE0F1]/70 text-[#FB9556] text-2xl md:text-5xl hover:bg-[#9DE0F1] hover:bg-opacity-90 transition-all duration-200">
               log in
             </button>
           </Link>
           <Link href="/signup" className="flex-1">
-            <button className="w-full py-2 md:py-4 rounded-full bg-[#FB9556]/70 text-[#EAFBFF] text-2xl md:text-5xl hover:bg-orange-300 transition">
+            <button className="w-full py-2 md:py-4 rounded-full bg-[#FB9556]/70 text-[#EAFBFF] text-2xl md:text-5xl hover:bg-[#FB9556] hover:bg-opacity-90 transition-all duration-200">
               sign up
             </button>
           </Link>
         </div>
+        
         <Link href="/game">
-          <button className="w-full py-2 md:py-4 rounded-full bg-[#7FFD81]/70 text-black text-2xl md:text-5xl hover:bg-green-300 transition">
+          <button className="w-full py-2 md:py-4 rounded-full bg-[#7FFD81]/70 text-black text-2xl md:text-5xl hover:bg-[#7FFD81] hover:bg-opacity-90 transition-all duration-200">
             start game
           </button>
         </Link>
+        
         <Link href="/stats">
-          <button className="flex justify-center items-center gap-2 w-full py-2 md:py-4 rounded-full bg-[#DFA4FD]/70 text-black text-2xl md:text-5xl hover:bg-green-300 transition">
+          <button className="flex justify-center items-center gap-2 w-full py-2 md:py-4 rounded-full bg-[#DFA4FD]/70 text-black text-2xl md:text-5xl hover:bg-[#DFA4FD] hover:bg-opacity-90 transition-all duration-200">
             stats
             <Icon
               icon="oui:token-histogram"
@@ -48,6 +50,9 @@ export default function Home() {
           </button>
         </Link>
       </div>
+      <Link href="/settings" className="absolute bottom-4 left-4">
+        <Icon icon="majesticons:settings-cog" width="70" height="70" color="#4A5568" />
+      </Link>
     </div>
   );
 }

@@ -44,11 +44,11 @@ export default function Login() {
         </p>
       </div>
 
-      <Link href="/" className="absolute bottom-6 left-6">
-        <Icon icon="pixelarticons:home" width="60" height="60" color="#003366" />
+      <Link href="/settings" className="absolute bottom-4 left-4">
+        <Icon icon="majesticons:settings-cog" width="40" height="40" color="#4A5568" />
       </Link>
-      <Link href="/" className="absolute bottom-6 right-6">
-        <Icon icon="pixelarticons:home" width="60" height="60" color="#003366" />
+      <Link href="/" className="absolute bottom-4 right-4">
+        <Icon icon="pixelarticons:home" width="40" height="40" color="#4A5568" />
       </Link>
     </div>
   );

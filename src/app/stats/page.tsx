@@ -61,10 +61,10 @@ export default function Stats() {
       </div>
 
       <Link href="/settings" className="absolute bottom-4 left-4">
-        <Icon icon="majesticons:settings-cog" width="40" height="40" color="#4A5568" />
+        <Icon icon="majesticons:settings-cog" width="70" height="70" color="#4A5568" />
       </Link>
       <Link href="/" className="absolute bottom-4 right-4">
-        <Icon icon="pixelarticons:home" width="40" height="40" color="#4A5568" />
+        <Icon icon="pixelarticons:home" width="70" height="70" color="#4A5568" />
       </Link>
     </div>
   );
