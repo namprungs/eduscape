@@ -17,7 +17,8 @@ export default function Login() {
     try {
       e.preventDefault();
       setLoading(true);
-
+      const userName = name.trim().toLowerCase();
+      const userPassword = password.trim().toLowerCase();
       if (!password || !name) {
         setError("Please enter complete information.");
         setLoading(false);
@@ -46,8 +47,8 @@ export default function Login() {
       }
 
       const res = await signIn("credentials", {
-        name,
-        password,
+        username: userName,
+        password: userPassword,
         redirect: false,
       });
 

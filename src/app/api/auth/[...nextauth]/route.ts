@@ -4,7 +4,6 @@ import { User } from "next-auth";
 import { AuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-const jwtt = require("jsonwebtoken");
 
 interface CustomUser extends User {
   username: string;
