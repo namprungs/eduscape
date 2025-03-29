@@ -31,7 +31,7 @@ export default function Home() {
           </Link>
         </div>
 
-        <Link href="/game">
+        <Link href="/games">
           <button className="w-full py-2 md:py-4 rounded-full bg-[#7FFD81]/70 text-black text-2xl md:text-5xl hover:bg-[#7FFD81] hover:bg-opacity-90 transition-all duration-200">
             start game
           </button>

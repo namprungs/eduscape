@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+
+.font-jersey {
+  font-family: 'Jersey 10', sans-serif;
+}
+@font-face {
+  font-family: 'Jersey 10';
+  src: url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+  font-weight: normal;
+  font-style: normal;
+}

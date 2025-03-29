@@ -3,6 +3,8 @@ import { useState, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { interactiveMap } from '@/data/InteractiveItems';
+import WinModal from '@/component/WinModal';
+import LoseModal from '@/component/LoseModal';
 
 export default function PuzzleRoom() {
   const [isZooming, setIsZooming] = useState(false);
@@ -83,6 +85,7 @@ export default function PuzzleRoom() {
           )}
         </div>
       </div>
+      <LoseModal/>
     </div>
   );
 }
