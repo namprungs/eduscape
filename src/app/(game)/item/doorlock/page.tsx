@@ -4,10 +4,12 @@ import Image from "next/image";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import WinModal from "@/component/WinModal";
 
 export default function DoorLockPage() {
   const [code, setCode] = useState<string>("");
   const { data: session } = useSession();
+  const [showWinModal, setShowWinModal] = useState(false); // New state for modal
   const router = useRouter();
 
   // Handle numpad button press
@@ -30,12 +32,11 @@ export default function DoorLockPage() {
 
           const result = await response.json();
 
-          if (!result.success) {
+          if (!result.correct) {
             alert(result.message);
-            setCode(""); // Clear the input
+            setCode("");
           } else {
-            alert(result.message);
-            await router.push("/"); // Redirect to the main page
+            setShowWinModal(true);
           }
         } catch (error) {
           console.error('Error sending code:', error);
@@ -55,10 +56,13 @@ export default function DoorLockPage() {
           src="/images/doorlock.png"
           alt="Door Lock"
           fill
-          className="object-fit"
+          className="object-cover object-center"
           sizes="100vw"
           priority
         />
+
+        {/* Win Modal - Conditionally rendered */}
+        {showWinModal && <WinModal />}
 
       <div className="relative z-10 flex flex-col items-center justify-center w-100 max-w-s ml-10">
         {/* Code Display - Centered above numpad */}
