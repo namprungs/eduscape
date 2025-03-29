@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 
 export default function Login() {
   return (
-    <div className="flex flex-col w-full items-center justify-center h-screen">
+    <div className="flex flex-col w-full items-center justify-center h-screen p-4">
       <div className="bg-[#9DE0F1]/70 rounded-[48px] p-8 w-full max-w-lg drop-shadow-md">
         <h2 className="text-6xl md:text-5xl text-black text-center mb-6">
           log in

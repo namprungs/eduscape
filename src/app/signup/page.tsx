@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 
 export default function Login() {
   return (
-    <div className="flex flex-col w-full items-center justify-center h-screen">
+    <div className="flex flex-col w-full items-center justify-center h-screen p-4">
       <div className="bg-[#FB9556]/70 rounded-[48px] p-8 w-full max-w-lg drop-shadow-md">
         <h2 className="text-6xl md:text-5xl text-black text-center mb-6">
           sign up
@@ -21,7 +21,7 @@ export default function Login() {
           </div>
           <div>
             <div className="px-4 text-4xl md:text-4xl text-black">
-            password
+              password
             </div>
             <input
               type="password"
@@ -37,9 +37,9 @@ export default function Login() {
         </div>
 
         <p className="text-center text-white text-lg md:text-xl ">
-          Don&apos;t have an account?{" "}
+          Already have an account?{" "}
           <Link href="/signup" className="ml-2 text-black hover:underline">
-            Sign up
+            log in
           </Link>
         </p>
       </div>
