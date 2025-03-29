@@ -21,7 +21,7 @@ export default function DoorLockPage() {
       // Check if we've reached 4 digits
       if (newCode.length === 4) {
         try {
-          const response = await fetch('http://localhost:8080/api/v1/submit_answer', {
+          const response = await fetch('http://localhost:5000/api/v1/submit_answer', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
