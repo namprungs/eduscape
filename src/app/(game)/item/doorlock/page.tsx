@@ -14,12 +14,12 @@ export default function DoorLockPage() {
 
   // Handle numpad button press
   const handleNumpadPress = async (digit: string) => {
-    if (code.length < 4) {
+    if (code.length < 6) {
       const newCode = code + digit;
       setCode(newCode);
       
       // Check if we've reached 4 digits
-      if (newCode.length === 4) {
+      if (newCode.length === 6) {
         try {
           const response = await fetch('http://localhost:8080/api/v1/submit_answer', {
             method: 'POST',
