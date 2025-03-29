@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from 'react';
+'use client'
 
-const Timer = () => {
-  const [timeLeft, setTimeLeft] = useState(300); // 5 minutes in seconds
+interface TimerProps {
+  timeLeft: number;
+}
 
-  useEffect(() => {
-    if (timeLeft <= 0) return;
+const Timer = ({timeLeft}:TimerProps) => {
 
-    const timer = setInterval(() => {
-      setTimeLeft((prevTime) => prevTime - 1);
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [timeLeft]);
 
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
@@ -21,7 +15,10 @@ const Timer = () => {
 
 
   return (
-    <h2 className="text-2xl font-bold">{formatTime(timeLeft)}</h2>
+    
+    <div className="fixed top-8 left-7 w-[150px] bg-[#E9F6F9]  py-4 px-6 rounded-full shadow-lg ">
+      <p className="text-6xl text-black text-center">{formatTime(timeLeft)}</p>
+    </div>
 
   );
 };

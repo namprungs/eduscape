@@ -85,7 +85,7 @@ export default function PuzzleRoom() {
           )}
         </div>
       </div>
-      <LoseModal/>
+      {/* <LoseModal/> */}
     </div>
   );
 }
