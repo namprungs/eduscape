@@ -67,7 +67,7 @@ export default function DoorLockPage() {
       <div className="relative z-10 flex flex-col items-center justify-center w-100 max-w-s ml-10">
         {/* Code Display - Centered above numpad */}
         <div className="w-full mb-2 flex justify-center">
-          <div className="w-64 h-20 bg-green-500/80 text-white text-7xl font-mono flex items-center justify-center rounded-lg">
+          <div className="w-64 h-20 bg-green-500/20 text-white text-7xl font-mono flex items-center justify-center rounded-lg">
             {code.length > 0 ? "*".repeat(code.length) : "____"}
           </div>
         </div>
@@ -80,9 +80,9 @@ export default function DoorLockPage() {
             <button
               key={digit}
               onClick={() => handleNumpadPress(digit.toString())}
-              className="w-23 h-23 bg-gray-200/70 hover:bg-gray-300/70 text-black text-3xl font-bold rounded-full flex items-center justify-center transition-colors active:scale-95 p-20px my-5 mx-2"
+              className="w-23 h-23 bg-gray-200/30 hover:bg-gray-300/70 text-black text-3xl font-bold rounded-full flex items-center justify-center transition-colors active:scale-95 p-20px my-5 mx-2"
             >
-              {digit}
+               
             </button>
           ))}
         
