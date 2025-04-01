@@ -122,13 +122,7 @@ export default function Login() {
         </p>
       </div>
 
-      <Link href="/settings" className="absolute bottom-4 left-4 md:bottom-8 md:left-8">
-        <Icon
-          icon="majesticons:settings-cog"
-          className="w-[40px] h-[40px] md:w-[70px] md:h-[70px]"
-          color="#4A5568"
-        />
-      </Link>
+      
       <Link href="/" className="absolute bottom-4 right-4 md:bottom-8 md:right-8">
         <Icon
           icon="pixelarticons:home"

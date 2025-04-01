@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import * as Progress from "@radix-ui/react-progress";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react"; // If using NextAuth.js
+import { Session } from "@/types/user";
 
 interface SubjectStat {
   subject: string;
@@ -30,7 +31,7 @@ export default function Stats() {
       try {
         const response = await fetch('http://localhost:5000/api/v1/stats', {
           headers: {
-            'Authorization': `Bearer ${session?.user?.token}`// Use your token
+            'Authorization': `Bearer ${(session as Session)?.user?.token}`// Use your token
           }
         });
         

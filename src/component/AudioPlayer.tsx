@@ -1,7 +1,6 @@
 // src/component/AudioPlayer.tsx
 "use client";
-import { useEffect, useState } from "react";
-
+import { useCallback, useEffect, useState } from "react";
 const audio = typeof window !== "undefined" ? new Audio("/sound/bgmusic.mp3") : null;
 
 export default function AudioPlayer() {
@@ -9,7 +8,7 @@ export default function AudioPlayer() {
   const [hasInteracted, setHasInteracted] = useState(false);
 
   // ฟังก์ชันเริ่มเล่น audio
-  const startAudio = () => {
+  const startAudio = useCallback(() => {
     if (audio && !isPlaying) {
       audio.loop = true;
       audio.volume = 0.5;
@@ -21,7 +20,7 @@ export default function AudioPlayer() {
         })
         .catch((error) => console.error("Error playing audio:", error));
     }
-  };
+  }, [isPlaying]);
 
   // ตรวจจับ user interaction
   useEffect(() => {
@@ -40,7 +39,7 @@ export default function AudioPlayer() {
       window.removeEventListener("click", handleInteraction);
       window.removeEventListener("touchstart", handleInteraction);
     };
-  }, [hasInteracted]);
+  }, [hasInteracted, startAudio]);
 
   // Cleanup เมื่อ component unmount
   useEffect(() => {
@@ -65,7 +64,7 @@ export default function AudioPlayer() {
 }
 
 // Optional: export ฟังก์ชันควบคุม
-export const pauseAudio = () => {
+export const pauseAudio = (setIsPlaying:(a:boolean)=>void) => {
   if (audio) {
     audio.pause();
     setIsPlaying(false); // ต้องหาวิธีอัพเดท state ถ้าใช้จากที่อื่น

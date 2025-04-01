@@ -1,5 +1,4 @@
 'use client'; // Add this since we're using hooks
-import type { Metadata } from "next";
 import "../globals.css";
 import Timer from "@/component/Timer";
 import { useState, useEffect } from "react";

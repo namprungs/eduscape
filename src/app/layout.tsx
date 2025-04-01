@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { jersey10 } from "@/font/fonts";
-import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]/route";
 import NextAuthProvider from "@/auth/providers/ NextAuthProvider";
 import AudioPlayer from "@/component/AudioPlayer";
 
@@ -19,13 +17,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const nextAuthSession = await getServerSession(authOptions);
 
   
 
   return (
     <html lang="en">
-      <NextAuthProvider session={nextAuthSession}>
+      <NextAuthProvider>
 
         <body className={`${jersey10.className} min-h-screen relative text-white`}>
           <div className="flex flex-col items-center justify-center min-h-screen">

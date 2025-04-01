@@ -26,6 +26,7 @@ export default function ItemPage() {
   ];
 
   const handleNumberPress = (num: string) => {
+      if(password.length >= 8) return; // จำกัดความยาว password ที่ 8 ตัวอักษร
       setPassword((prev) => prev + num);
   };
 

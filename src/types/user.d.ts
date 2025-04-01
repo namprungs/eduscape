@@ -4,6 +4,11 @@ export interface User {
   // เพิ่มข้อมูลเพิ่มเติมตามที่ต้องการ
 }
 
+interface CustomUser extends User {
+  username: string;
+  token: string;
+}
+
 export interface JWT extends User {
   token: string; // เพิ่มข้อมูลที่ต้องการใน JWT
 }
@@ -11,8 +16,8 @@ export interface JWT extends User {
 export interface Session {
   user: {
     username: string;
-    // เพิ่มข้อมูลเพิ่มเติมตามที่ต้องการ
     token: string;
   };
+  
   expires: string;
 }

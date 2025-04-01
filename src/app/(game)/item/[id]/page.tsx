@@ -1,16 +1,16 @@
 'use client'
 import { InteractiveItem, interactiveMap } from '@/data/InteractiveItems';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { useCallback, useState, useRef } from 'react';
 
-export default function ItemPage({ params }: { params: { id: string } }) {
+export default function ItemPage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
-  
+  const paramsja = useParams<{ id: string }>();
   // ค้นหา currentItem จากทุกฉากใน interactiveMap
   let currentItem: InteractiveItem | undefined;
   for (const scene in interactiveMap) {
-    const found = interactiveMap[scene].find(item => item.id === params.id);
+    const found = interactiveMap[scene].find(item => item.id === paramsja.id);
     if (found) {
       currentItem = found;
       break;
@@ -18,18 +18,17 @@ export default function ItemPage({ params }: { params: { id: string } }) {
   }
 
   const [zoomStyle, setZoomStyle] = useState({});
-  const [isZooming, setIsZooming] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleBackgroundClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current || !interactiveMap[params.id]) return;
+    if (!containerRef.current || !interactiveMap[paramsja.id]) return;
 
     const rect = containerRef.current.getBoundingClientRect();
     const clickX = ((e.clientX - rect.left) / rect.width) * 100;
     const clickY = ((e.clientY - rect.top) / rect.height) * 100;
 
-    // ใช้ interactiveMap[params.id] เฉพาะฉากปัจจุบัน
-    const clickedItem = interactiveMap[params.id].find(item => {
+    // ใช้ interactiveMap[paramsja.id] เฉพาะฉากปัจจุบัน
+    const clickedItem = interactiveMap[paramsja.id].find(item => {
       const { x, y, width, height } = item.clickArea;
       return (
         clickX >= x &&
@@ -39,7 +38,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
       );
     });
 
-    if (clickedItem && clickedItem.id !== params.id) {
+    if (clickedItem && clickedItem.id !== paramsja.id) {
       const { x, y, width, height } = clickedItem.clickArea;
       const centerX = x + width / 2;
       const centerY = y + height / 2;
@@ -49,14 +48,13 @@ export default function ItemPage({ params }: { params: { id: string } }) {
         transformOrigin: `${centerX}% ${centerY}%`,
         transform: 'scale(1.5)',
       });
-      setIsZooming(true);
 
       // เปลี่ยนหน้าไปไอเทมใหม่หลังซูม
       setTimeout(() => {
         router.push(`/item/${clickedItem.id}`);
       }, 500);
     }
-  }, [router, params.id]);
+  }, [router, paramsja.id]);
 
   if (!currentItem) {
     return <div className="text-white text-center mt-10">Item not found</div>;
@@ -84,8 +82,8 @@ export default function ItemPage({ params }: { params: { id: string } }) {
             priority
           />
 
-          {process.env.NODE_ENV === 'development' && interactiveMap[params.id] && (
-            interactiveMap[params.id].map(item => (
+          {/* {process.env.NODE_ENV === 'development' && interactiveMap[paramsja.id] && (
+            interactiveMap[paramsja.id].map(item => (
               <div
                 key={item.id}
                 className="absolute border-2 border-red-500 opacity-50 pointer-events-none"
@@ -97,7 +95,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                 }}
               />
             ))
-          )}
+          )} */}
         </div>
 
         <button

@@ -3,11 +3,8 @@ import { useState, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { interactiveMap } from '@/data/InteractiveItems';
-import WinModal from '@/component/WinModal';
-import LoseModal from '@/component/LoseModal';
 
 export default function PuzzleRoom() {
-  const [isZooming, setIsZooming] = useState(false);
   const [zoomStyle, setZoomStyle] = useState({});
   const containerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -42,7 +39,6 @@ export default function PuzzleRoom() {
         transformOrigin: `${centerX}% ${centerY}%`,
         transform: 'scale(1.5)',
       });
-      setIsZooming(true);
 
       // หลังจากซูม 500ms ค่อยเปลี่ยนหน้า
       setTimeout(() => {
@@ -69,7 +65,7 @@ export default function PuzzleRoom() {
             sizes="100vw"
           />
 
-          {process.env.NODE_ENV === 'development' && (
+          {/* {process.env.NODE_ENV === 'development' && (
             roomItems.map(item => (
               <div
                 key={item.id}
@@ -82,7 +78,7 @@ export default function PuzzleRoom() {
                 }}
               />
             ))
-          )}
+          )} */}
         </div>
       </div>
       {/* <LoseModal/> */}

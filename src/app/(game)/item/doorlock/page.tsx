@@ -5,10 +5,11 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import WinModal from "@/component/WinModal";
+import { Session } from "@/types/user";
 
 export default function DoorLockPage() {
   const [code, setCode] = useState<string>("");
-  const { data: session } = useSession();
+  const { data: session } = useSession() as { data: Session | null };
   const [showWinModal, setShowWinModal] = useState(false); // New state for modal
   const router = useRouter();
 
@@ -21,11 +22,16 @@ export default function DoorLockPage() {
       // Check if we've reached 4 digits
       if (newCode.length === 6) {
         try {
+          const token = session?.user?.token
+          if (!token) {
+            alert("Please log in first.");
+            return;
+          }
           const response = await fetch('http://localhost:5000/api/v1/submit_answer', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': `Bearer ${session?.user?.token}`
+              'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({ puzzle_id: 7, answer: newCode }),
           });

@@ -1,11 +1,12 @@
 'use client'; // Add this since we're using hooks
+import { Session } from "@/types/user";
 import { Icon } from "@iconify/react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect } from "react";
 
 export default function Home() {
-  const session = useSession(); // Get auth session
+  const {data:session ,status} = useSession();
 
   useEffect(() => {
     console.log("Session data:", session);
@@ -26,9 +27,9 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col gap-3 md:gap-6 w-full max-w-[600px] md:w-[70%]">
-        {session?.status === "authenticated" ? (
+        {status === "authenticated" ? (
           <h2 className="text-3xl md:text-5xl text-[#003366] text-center">
-            Welcome back, {session?.data?.user?.username} !
+            Welcome back, {(session as Session)?.user?.username} !
           </h2>
         ) : (
           <h2 className="text-3xl md:text-5xl text-[#003366] text-center">
@@ -36,7 +37,7 @@ export default function Home() {
           </h2>
         )}
 
-        {session?.status === "unauthenticated" ? (
+        {status === "unauthenticated" ? (
           <div className="flex gap-2 md:gap-4">
             <Link href="/login" className="flex-1">
               <button className="w-full py-2 md:py-4 rounded-full bg-[#9DE0F1]/70 text-[#FB9556] text-2xl md:text-5xl hover:bg-[#9DE0F1] hover:bg-opacity-90 transition-all duration-200">
@@ -74,13 +75,7 @@ export default function Home() {
 
 
       </div>
-      <Link href="/settings" className="absolute bottom-4 left-4 md:bottom-25 md:left-30">
-        <Icon
-          icon="majesticons:settings-cog"
-          className="w-[40px] h-[40px] md:w-[80px] md:h-[80px]"
-          color="#4A5568"
-        />
-      </Link>
+      
     </div>
   );
 }
