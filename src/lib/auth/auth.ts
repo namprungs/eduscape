@@ -1,13 +1,13 @@
 import NextAuth from "next-auth";
 import { authConfig } from "./auth.config";
-import { Account } from "next-auth";
+// import { Account } from "next-auth";
 import { CustomUser, Session } from "@/types/user";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
   session: { strategy: "jwt" },
   callbacks: {
-    async signIn({ account}: { account: Account; }) {
+    async signIn({ account}) {
       switch (account?.provider) {
         case "credentials":
           return true;

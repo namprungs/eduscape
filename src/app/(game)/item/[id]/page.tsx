@@ -3,8 +3,7 @@ import { InteractiveItem, interactiveMap } from '@/data/InteractiveItems';
 import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
 import { useCallback, useState, useRef } from 'react';
-
-export default function ItemPage({ params }: { params: Promise<{ id: string }> }) {
+export default function ItemPage() {
   const router = useRouter();
   const paramsja = useParams<{ id: string }>();
   // ค้นหา currentItem จากทุกฉากใน interactiveMap
