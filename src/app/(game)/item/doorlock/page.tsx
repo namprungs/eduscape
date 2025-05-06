@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import WinModal from "@/component/WinModal";
-import { Session } from "@/types/user";
+import { Session } from "@/types/User";
 
 export default function DoorLockPage() {
   const [code, setCode] = useState<string>("");

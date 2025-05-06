@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import * as Progress from "@radix-ui/react-progress";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react"; // If using NextAuth.js
-import { Session } from "@/types/user";
+import { Session } from "@/types/User";
 
 interface SubjectStat {
   subject: string;

@@ -1,12 +1,12 @@
 'use client'; // Add this since we're using hooks
-import { Session } from "@/types/user";
+import { Session } from "@/types/User";
 import { Icon } from "@iconify/react";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect } from "react";
 
 export default function Home() {
-  const {data:session ,status} = useSession();
+  const { data: session, status } = useSession();
 
   useEffect(() => {
     console.log("Session data:", session);
@@ -70,12 +70,23 @@ export default function Home() {
                 />
               </button>
             </Link>
+              <button onClick={()=>signOut()} className="flex justify-center items-center gap-2 w-full py-2 md:py-4 rounded-full bg-[#cf4b4b]/70 text-black text-2xl md:text-5xl hover:bg-[#DFA4FD] hover:bg-opacity-90 transition-all duration-200">
+                Logout
+                <Icon
+                  icon="pixelarticons:logout"
+                  width="40"
+                  height="40"
+                  color="black"
+                  className="md:w-[60px] md:h-[60px]"
+                />
+              </button>
           </>
         )}
 
 
       </div>
-      
+
+
     </div>
   );
 }

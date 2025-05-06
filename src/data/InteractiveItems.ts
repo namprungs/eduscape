@@ -10,7 +10,7 @@ export interface InteractiveItem {
   };
 }
 
-export const interactiveMap: Record<string, InteractiveItem[]> = {
+export const interactiveMap: Record<string, Array<InteractiveItem>> = {
   room: [
     {
       id: "note_glass",
