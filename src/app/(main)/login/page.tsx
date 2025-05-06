@@ -3,22 +3,16 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
 export default function Login() {
 
   const router = useRouter();
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    if (status === "authenticated") {
-      router.replace("/");
-    }
-  }, [status,router]);
 
   const handlerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     try {

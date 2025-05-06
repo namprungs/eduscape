@@ -1,13 +1,21 @@
 'use client'
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { interactiveMap } from '@/data/InteractiveItems';
+import { useSession } from 'next-auth/react';
 
 export default function PuzzleRoom() {
+  const { status } = useSession(); // Get auth session
   const [zoomStyle, setZoomStyle] = useState({});
   const containerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.replace("/");
+    }
+  }, [status,router]);
 
   // ใช้ข้อมูลจาก interactiveMap['room'] เป็นฉากเริ่มต้น
   const roomItems = interactiveMap['room'];
