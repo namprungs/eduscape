@@ -1,17 +1,24 @@
 'use client'
 import Link from "next/link";
 import { Icon } from "@iconify/react";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Login() {
 
   const router = useRouter();
+  const { data: session, status } = useSession();
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.replace("/");
+    }
+  }, [status,router]);
 
   const handlerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
@@ -49,7 +56,7 @@ export default function Login() {
     }
   };
 
-  if(loading) {
+  if(loading || status === "loading") {
     return (
       <div className="flex flex-col w-full items-center justify-center h-screen p-4">
         <div className="bg-[#9DE0F1]/70 rounded-[48px] p-8 w-full max-w-lg drop-shadow-md">
