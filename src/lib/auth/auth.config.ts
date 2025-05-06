@@ -8,6 +8,10 @@ export const authConfig: NextAuthOptions = {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60,
   },
+  pages: {
+    signIn: '/login',
+    
+  },
   callbacks: {
     async signIn({ user:_user, account }: { user: User | AdapterUser; account: Account | null }) {
       if (account?.provider === "credentials") {
