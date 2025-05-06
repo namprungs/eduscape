@@ -45,7 +45,7 @@ export default function Login() {
         setLoading(false);
         return;
       }
-
+      console.log("go kub");
       const res = await signIn("credentials", {
         username: userName,
         password: userPassword,

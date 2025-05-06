@@ -18,7 +18,7 @@ export default function DoorLockPage() {
     if (code.length < 6) {
       const newCode = code + digit;
       setCode(newCode);
-      
+
       // Check if we've reached 4 digits
       if (newCode.length === 6) {
         try {
@@ -27,7 +27,9 @@ export default function DoorLockPage() {
             alert("Please log in first.");
             return;
           }
-          const response = await fetch('http://localhost:5000/api/v1/submit_answer', {
+          const apiUrl = process.env.BACKEND_URL || "http://localhost:3000/api/auth/login";
+
+          const response = await fetch(apiUrl + '/submit_answer', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -57,18 +59,18 @@ export default function DoorLockPage() {
 
   return (
     <div className="relative flex items-center justify-center min-h-screen w-full bg-gray-100">
-        {/* Full-page Door Lock Image */}
-        <Image
-          src="/images/doorlock.png"
-          alt="Door Lock"
-          fill
-          className="object-cover object-center"
-          sizes="100vw"
-          priority
-        />
+      {/* Full-page Door Lock Image */}
+      <Image
+        src="/images/doorlock.png"
+        alt="Door Lock"
+        fill
+        className="object-cover object-center"
+        sizes="100vw"
+        priority
+      />
 
-        {/* Win Modal - Conditionally rendered */}
-        {showWinModal && <WinModal />}
+      {/* Win Modal - Conditionally rendered */}
+      {showWinModal && <WinModal />}
 
       <div className="relative z-10 flex flex-col items-center justify-center w-100 max-w-s ml-10">
         {/* Code Display - Centered above numpad */}
@@ -88,11 +90,11 @@ export default function DoorLockPage() {
               onClick={() => handleNumpadPress(digit.toString())}
               className="w-23 h-23 bg-gray-200/30 hover:bg-gray-300/70 text-black text-3xl font-bold rounded-full flex items-center justify-center transition-colors active:scale-95 p-20px my-5 mx-2"
             >
-               
+
             </button>
           ))}
-        
-          
+
+
           {/* Back Button - Only shown when router is available */}
           {typeof window !== 'undefined' && (
             <button

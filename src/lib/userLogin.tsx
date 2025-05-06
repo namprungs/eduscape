@@ -3,8 +3,9 @@ export default async function userLogIn(
   username: string,
   userPassword: string
 ) {
+  const apiUrl = process.env.BACKEND_URL || "http://localhost:3000/api/auth/login";
   console.log("entry to login ja", username, userPassword);
-  const response = await axios.post('http://localhost:5000/api/v1/login', {
+  const response = await axios.post(apiUrl+"/login", {
     username: username,
     password: userPassword,
   });

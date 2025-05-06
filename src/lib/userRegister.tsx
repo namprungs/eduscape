@@ -1,25 +1,22 @@
-
-export default async function userRegister(userName:string,userPassword:string) {
+import axios from 'axios';
+export default async function userRegister(userName: string, userPassword: string) {
   try {
-      console.log("entry to register");
-      const response = await fetch('http://localhost:5000/api/v1/register', {
-        method: 'POST',
-        body: JSON.stringify({
-          username: userName,
-          password: userPassword,
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
-      console.log(data);
-      return data;
+    // const apiUrl = process.env.BACKEND_URL || "";
+    console.log("entry to login ja", userName, userPassword);
+    const response = await axios.post("https://escape-room-backend-production.up.railway.app/api/v1/register", {
+      username: userName,
+      password: userPassword,
+    });
+
+    console.log("response is ", response);
+    if (response.status !== 201) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.data;
+    console.log(data);
+    return data;
   } catch (error) {
-      console.log("error in userLogin is ",error);
+    console.log("error in userLogin is ", error);
   }
 
 }
