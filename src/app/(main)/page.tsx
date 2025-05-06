@@ -3,14 +3,18 @@ import { Session } from "@/types/User";
 import { Icon } from "@iconify/react";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function Home() {
   const { data: session, status } = useSession();
-
+  const router= useRouter();
   useEffect(() => {
     console.log("Session data:", session);
   }, [session]);
+  useEffect(() => {
+    router.refresh();
+  },[])
   return (
     <div className="flex flex-col items-center justify-center gap-4 md:gap-8 h-screen px-4">
       <div className="flex items-center gap-2 md:gap-3">

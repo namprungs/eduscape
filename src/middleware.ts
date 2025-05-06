@@ -7,7 +7,7 @@ export async function middleware(req: NextRequest) {
 
   // ถ้าไม่มี token (ยังไม่ได้ login)
   if (!token) {
-    const loginUrl = new URL("/register", req.url)
+    const loginUrl = new URL("/login", req.url)
     return NextResponse.redirect(loginUrl)
   }
 
