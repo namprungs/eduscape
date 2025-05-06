@@ -4,6 +4,10 @@ import type { Account, User } from "next-auth";
 import type { AdapterUser } from "next-auth/adapters";
 export const authConfig: NextAuthOptions = {
   providers: [UserPassword],
+  session: {
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60,
+  },
   callbacks: {
     async signIn({ user:_user, account }: { user: User | AdapterUser; account: Account | null }) {
       if (account?.provider === "credentials") {
@@ -16,6 +20,7 @@ export const authConfig: NextAuthOptions = {
         session.user.username = token.username as string;
         session.user.token = token.token as string;
       }
+      console.log("this is session", session);
       return session;
     },
     async jwt({
