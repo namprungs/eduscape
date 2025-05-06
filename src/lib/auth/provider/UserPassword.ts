@@ -17,7 +17,7 @@ export const UserPassword = Credentials({
       const { username, password } = credentials;
       console.log("before login ja", username, password);
       const response = await userLogIn(username, password); // รับ response ที่ประกอบไปด้วย user และ token
-      console.log("after login ja", username, password);
+      console.log("after login ja", username, password);  
 
       if (response?.token && response?.user) {
         return {
@@ -28,7 +28,7 @@ export const UserPassword = Credentials({
         return null;
       }
     } catch (error) {
-      console.log("error is " + error);
+      console.log("error is " + error);   
       return null;
     }
   },
