@@ -29,7 +29,8 @@ export default function Stats() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/v1/stats', {
+        const apiUrl = process.env.BACKEND_URL || "http://localhost:5000/api/v1/stats";
+        const response = await fetch(apiUrl+'/stats', {
           headers: {
             'Authorization': `Bearer ${(session as Session)?.user?.token}`// Use your token
           }
